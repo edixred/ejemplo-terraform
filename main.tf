@@ -9,13 +9,18 @@ terraform {
 
 
 provider "aws" {
-  region                      = "us-east-1" # <<<<< Try changing this to eu-west-1 to compare the costs
+  region                      = "us-east-1"
   skip_credentials_validation = true
   skip_requesting_account_id  = true
 }
 
-
 resource "aws_instance" "example" {
-  ami           = "ami-0357d42faf6fa582f"
+  ami           = "ami-083654bd07b5da81d"
   instance_type = "t2.micro"
 }
+
+Variable "my_var" {
+              Type = string
+              Description = “a variable to create a string to configure some stuff”
+              Default = “this is a string to configure some stuff”
+              }
