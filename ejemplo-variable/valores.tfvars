@@ -1,12 +1,8 @@
-ami           = "ami-830c94e3"
-instance_type = "t2.micro"
-tags          = { Name = "practica2", Environment = "Prod" }
-sg_name       = "demo-securitygroup"
 
 ingress_rules = [
   {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "443"
+    to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   },
@@ -17,3 +13,9 @@ ingress_rules = [
     cidr_blocks = ["0.0.0.0/0"]
   }
 ]
+
+tags          = { Name = "pruebaTerraform", Environment = "prueba" }
+sg_name       = "prueba1"
+
+ami_id           = "ami-2757f631"
+instance_type = "t2.micro"
