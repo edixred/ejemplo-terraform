@@ -1,4 +1,4 @@
-ami           = "ami-083654bd07b5da81d"
+ami           = "ami-830c94e3"
 instance_type = "t2.micro"
 tags          = { Name = "practica2", Environment = "Prod" }
 sg_name       = "demo-securitygroup"

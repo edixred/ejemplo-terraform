@@ -7,19 +7,27 @@ terraform {
   }
 }
 
-
 provider "aws" {
-  region                      = var.aws_region
-  skip_credentials_validation = true
-  skip_requesting_account_id  = true
+  profile = "default"
+  region  = "us-west-2"
 }
-
 
 
 ###-------Recursos
 
+
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
 resource "aws_security_group" "ssh_connection" {
-  name = var.sg_name
+  name   = var.sg_name
+  vpc_id = aws_vpc.main.id
 
   dynamic "ingress" {
     for_each = var.ingress_rules
@@ -37,11 +45,21 @@ resource "aws_security_group" "ssh_connection" {
   }
 }
 
-resource "aws_instance" "web" {
+/*resource "aws_instance" "web" {
   ami             = var.ami_id
   instance_type   = var.instance_type
   tags            = var.tags
   security_groups = ["${aws_security_group.ssh_connection.name}"]
+}*/
+
+resource "aws_instance" "app_server" {
+  
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+
+  tags = {
+    Name = "ExampleAppServerInstance"
+  }
 }
 
 
@@ -65,7 +83,3 @@ variable "sg_name" {
 variable "ingress_rules" {
 }
 
-variable "aws_region" {
-  default     = "us-east-2"
-  description = "region donde el recurso será desplegado"
-}
