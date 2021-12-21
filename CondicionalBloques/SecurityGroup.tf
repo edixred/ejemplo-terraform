@@ -1,9 +1,6 @@
-/*
-resource "aws_security_group" "simple" {
-
+/*resource "aws_security_group" "simple" {
   name        = "demo-simple"
   description = "demo-simple"
-
   ingress {
     description = "Servicio 1 Web"
     from_port   = 80
@@ -11,7 +8,6 @@ resource "aws_security_group" "simple" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   ingress {
     description = "Servicio 2 ftp"
     from_port   = 81
@@ -40,5 +36,4 @@ resource "aws_security_group" "simple" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-*/
+}*/
