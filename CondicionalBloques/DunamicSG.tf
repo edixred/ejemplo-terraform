@@ -7,8 +7,8 @@ locals {
 
 resource "aws_security_group" "simple" {
 
-  name        = "demo-dynamicblock-simple"
-  description = "demo-dynamicblock-simple"
+  name        = "demo-dynamicblock"
+  description = "demo-dynamicblock"
   dynamic "ingress" {
     for_each = local.ports
     content {
@@ -22,7 +22,7 @@ resource "aws_security_group" "simple" {
 }
 
 
-
+#condiciones
 variable "condicion" {
   default = "SI"
 }
