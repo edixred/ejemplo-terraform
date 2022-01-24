@@ -14,8 +14,8 @@ ingress_rules = [
   }
 ]
 
-tags          = { Name = "pruebaTerraform", Environment = "prueba" }
-sg_name       = "prueba1"
+tags    = { Name = "demo-tf", Environment = "demo" }
+sg_name = "demo-sg"
 
-ami_id           = "ami-2757f631"
+ami_id        = "ami-2757f631"
 instance_type = "t2.micro"
